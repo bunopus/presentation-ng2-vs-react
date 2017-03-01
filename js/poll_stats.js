@@ -6,6 +6,9 @@ class PollMeter {
     }
 
     init(size) {
+        if(this.container) {
+            return;
+        }
         let body = d3.select('body');
         this.container = body.append('div')
             .attr('id', this.contasinerId)
@@ -81,6 +84,9 @@ class PollMeter {
     }
 
     remove() {
-        this.container.remove();
+        if(this.container) {
+            this.container.remove();
+            this.container = undefined;
+        }
     }
 }

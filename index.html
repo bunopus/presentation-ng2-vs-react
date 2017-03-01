@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Angular 2 vs React</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/serif.css">
@@ -28,9 +28,10 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-background="img/home_screen.jpg"></section>
-				<section><h2>Кто такой Евгений Гусев</h2></section>
-				<section><h2>Кто такой Илья Таратухин</h2></section>
+				<section data-background="img/home_screen.jpg" data-state="hide-meter"></section>
+				<section data-state="hide-meter"><h2>Кто такой Евгений Гусев</h2></section>
+				<section data-state="hide-meter"><h2>Кто такой Илья Таратухин</h2></section>
+				<section>Опрос</section>
 				<section>
 					<section><h2>Первые шаги в React: [EG]</h2></section>
 					<section></section>
@@ -47,7 +48,7 @@
 							<li>ng serve</li>
 						</ul>
 					</section>
-					<section>
+					<section data-state="hide-meter">
 						<h2>Первые впечатления от Angular 2:</h2>
 						<ul>
 							<li>4 строчки, 10 минут и есть работающее приложение с hot-reload, неплохо.</li>
@@ -79,8 +80,17 @@
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
-            var meter = new PollMeter();
-            meter.init(100);
+            const meter = new PollMeter();
+
+            Reveal.addEventListener( 'slidechanged', function( slide ) {
+                var attr = slide.currentSlide.attributes.getNamedItem('data-state');
+                if(attr && attr.value == 'hide-meter'){
+                    meter.remove();
+                } else {
+                    meter.init(100);
+                }
+            }, false );
+
 		</script>
 	</body>
 </html>
