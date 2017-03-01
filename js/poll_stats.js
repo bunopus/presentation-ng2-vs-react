@@ -58,7 +58,7 @@ class PollMeter {
     }
 
     updateMeters(angularMeter, reactMeter) {
-        $.get('http://localhost:3000/stats', (data) => {
+        $.get('/stats', (data) => {
             let result = {};
             let totalCount = 0;
             for (let i = 0; i < data.length; i++) {

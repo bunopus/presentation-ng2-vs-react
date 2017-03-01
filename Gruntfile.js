@@ -98,8 +98,19 @@ module.exports = function(grunt) {
 					port: port,
 					base: root,
 					livereload: true,
-					open: true
-				}
+					open: true,
+                    middleware: function (connect, options, middlewares) {
+						/*Requires the Middleware snipped from the Library
+						 and add it before the other Middlewares.*/
+                        middlewares.unshift(require('grunt-middleware-proxy/lib/Utils').getProxyMiddleware());
+                        return middlewares;
+                    }
+				},
+                proxies: [{
+                    context: '/stats', //REQUIRED! Must start with a '/' should not end with a '/'
+                    host: 'localhost', //REQUIRED! Should not contain 'http://' or 'https://'
+                    port: 3000, //Optional, defaults to 80 if http or 443 if https
+                }]
 			},
 
 		},
@@ -156,7 +167,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-sass' );
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
-	grunt.loadNpmTasks( 'grunt-autoprefixer' );
+    grunt.loadNpmTasks('grunt-middleware-proxy');
+    grunt.loadNpmTasks( 'grunt-autoprefixer' );
 	grunt.loadNpmTasks( 'grunt-zip' );
 	grunt.loadNpmTasks( 'grunt-retire' );
 
@@ -179,7 +191,7 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'package', [ 'default', 'zip' ] );
 
 	// Serve presentation locally
-	grunt.registerTask( 'serve', [ 'connect', 'watch' ] );
+	grunt.registerTask( 'serve', [ 'setupProxies:server','connect:server', 'watch' ] );
 
 	// Run tests
 	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
