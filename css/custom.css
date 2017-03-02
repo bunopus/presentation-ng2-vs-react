@@ -1,0 +1,10 @@
+.eg_info {
+    direction: rtl;
+    text-align: right;
+    margin-right: 150px !important;
+}
+
+.it_info {
+    text-align: left;
+    margin-left: 150px !important;
+}

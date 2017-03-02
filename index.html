@@ -11,6 +11,7 @@
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/custom.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -29,8 +30,18 @@
 		<div class="reveal">
 			<div class="slides">
 				<section data-background="img/home_screen.jpg" data-state="hide-meter"></section>
-				<section data-state="hide-meter"><h2>Кто такой Евгений Гусев</h2></section>
-				<section data-state="hide-meter"><h2>Кто такой Илья Таратухин</h2></section>
+				<section data-background="img/about_eg.png" data-state="hide-meter">
+					<div class="eg_info">
+						<h2>Евгений Гусев</h2>
+						<img src="img/wrike_logo.png" class="plain" style="width: 150px">
+					</div>
+				</section>
+				<section data-background="img/about_it.png" data-state="hide-meter">
+					<div class="it_info">
+						<h2>Илья Таратухин</h2>
+						<img src="img/wrike_logo.png" class="plain" style="width: 150px">
+					</div>
+				</section>
 				<section>
 					<img src="img/qr_poll.png" class="plain">
 					<h3>https://goo.gl/W8GYVT</h3>
@@ -73,6 +84,11 @@
 		<script>
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
+                width: "100%",
+                height: "100%",
+                margin: 0,
+                minScale: 1,
+                maxScale: 1,
 				history: true,
                 controls: false,
 				// More info https://github.com/hakimel/reveal.js#dependencies
