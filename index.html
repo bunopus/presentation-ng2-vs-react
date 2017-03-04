@@ -55,13 +55,13 @@
 				</section>
 				<section>
 					<h2><u>Часть 1: Знакомство</u></h2>
-					<img src="img/dogs_open.jpg" class="plain" width="900px">
+					<img src="img/dogs_open.jpg" class="img_chapter">
 				</section>
-				<section>
+				<section class="about_react">
 					<section><h2>Первые шаги в React: [EG] </h2></section>
 					<section></section>
 				</section>
-				<section>
+				<section class="about_angular">
 					<section>
 						<h2>Первые шаги в Angular 2: [IT]</h2>
 						<ul>
@@ -88,19 +88,20 @@
 				</section>
 				<section>
 					<h2><u>Часть 2: Спор</u></h2>
-					<img src="img/dogs_vs.jpg" class="plain" width="900px">
+					<img src="img/dogs_vs.jpg" class="img_chapter">
 				</section>
 				<section>
 					<h2><u>Часть 3: Боль</u></h2>
-					<img src="img/dogs_pain.jpg" class="plain" width="900px">
+					<img src="img/dogs_pain.jpg" class="img_chapter">
 				</section>
 				<section>
 					<h2><u>Часть 4: Конец</u></h2>
-					<img src="img/dogs_end.jpg" class="plain" width="900px">
+					<img src="img/dogs_end.jpg" class="img_chapter">
 				</section>
 			</div>
 		</div>
-
+		<div class="corner_logo about_angular"><img src="img/angular_logo.png"></div>
+		<div class="corner_logo about_react"><img src="img/react_logo.png"></div>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
 
@@ -131,8 +132,29 @@
                 } else {
                     meter.init(100);
                 }
+                $('.corner_logo').hide();
+                let cls;
+                if(cls = getCurrentFramework(slide.currentSlide)) {
+                    $(`.corner_logo.${cls}`).show();
+				}
             }, false );
 
+			function getCurrentFramework(slide) {
+			    const ngClass = 'about_angular';
+			    const reactClass = 'about_react';
+			    function findClass(el) {
+			        return findOne(el.classList, [ngClass, reactClass]);
+			    }
+                return findClass(slide) || findClass(slide.parentElement);
+			}
+
+            function findOne(haystack, arr) {
+                for (let item of arr) {
+                    if (haystack.contains(item)) {
+                        return item;
+                    }
+                }
+            }
 		</script>
 	</body>
 </html>
