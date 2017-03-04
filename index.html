@@ -58,8 +58,8 @@
 					<img src="img/dogs_open.jpg" class="img_chapter">
 				</section>
 				<section class="about_react">
-					<section><h2>Первые шаги в React: [EG] </h2></section>
-					<section></section>
+                    <section><h2>Perfect React <p style="color:red"><i>starter</i></p> project</h2><br>http://andrewhfarmer.com/starter-project/</section>
+                    <section data-background-video="video/react_starter.mp4" data-background-cover="contain"></section>
 				</section>
 				<section class="about_angular">
 					<section>
@@ -124,7 +124,7 @@
 				]
 			});
             const meter = new PollMeter();
-
+            $('.corner_logo').hide();
             Reveal.addEventListener( 'slidechanged', function( slide ) {
                 var attr = slide.currentSlide.attributes.getNamedItem('data-state');
                 if(attr && attr.value == 'hide-meter'){
