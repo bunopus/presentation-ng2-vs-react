@@ -125,8 +125,43 @@
 						</code></pre>
 					</section>
 					<section><img class="plain" width="1000px" src="img/wat_react_demo.gif"></section>
-					<section>тесты</section>
 					<section>
+						<h2>Вкратце о тестах:</h2>
+					</section>
+					<section data-background="img/react_tests_fail.gif"></section>
+					<section>
+						<pre><code data-trim style="font-size: 22px; line-height: 22px">
+								it('renders properly', (done) => {
+
+									const resolved = new Promise((r) => r({data: {weather: [{main: 'My Weather'}]}}));
+									sandbox.stub(axios, 'get').returns(resolved);
+
+									const renderer = ReactTestUtils.createRenderer();
+									renderer.render(<WeatherWidget city="Saint-Petersburg"></WeatherWidget>);
+									const result = renderer.getRenderOutput();
+
+									setTimeout(() => {
+										expect(result.type).toBe('div');
+										expect(result.props.children).toEqual([
+											<h2>Hello, username!</h2>,
+											<h2>
+												Your city: {'Saint-Petersburg'}
+											</h2>,
+											<h3>The Weather is: {'My Weather'}</h3>,
+											<span>
+												<h3>
+													Go get drunk
+												</h3>
+												<img alt="beer" src="beer.png" width={30}/>
+											</span>
+										]);
+										done();
+									}, 0);
+								});
+						</code></pre>
+					</section>
+					<section>
+						<h2>Итого:</h2>
 						<ul>
 							<li>Как совместить названия компонентов и названия классов по styleguide</li>
 							<li>Как сделать DI?</li>
