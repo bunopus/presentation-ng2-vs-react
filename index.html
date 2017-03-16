@@ -37,10 +37,10 @@
 					</div>
 				</section>
 				<section data-background="img/about_it.png" data-state="hide-meter">
-					<!--<section>-->
+					<section>
 						<div class="it_info">
 							<h2>Илья Таратухин</h2>
-							<div style="position:relative" >
+							<div style="position:relative; height: 150px;" >
 								<div class="fragment fade-in" style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;" data-fragment-index="0">
 									<img src="img/wrike_logo.png" class="plain" width="150px">
 								</div>
@@ -48,19 +48,16 @@
 									<img src="img/2gis.png" class="plain" width="150px">
 								</div>
 							</div>
+							<ul>
+								<li class="fragment">Frontend dev 6 лет</li>
+								<li class="fragment">2gis.ru x2</li>
+								<li class="fragment">CodeFest x2</li>
+								<li class="fragment">Wrike полгода</li>
+								<li class="fragment">Dart + Angular 2</li>
+							</ul>
+
 						</div>
-					<!--</section>-->
-					<!--<section>-->
-						<!--<div class="it_info">-->
-							<!--<ul>-->
-								<!--<li>6 лет во frontend</li>-->
-								<!--<li>Прошел через 3 версии 2gis.ru</li>-->
-								<!--<li>Knockout.js -> ... -> React</li>-->
-								<!--<li>Последние полгода в Wrike</li>-->
-								<!--<li>Dart + Angular 2</li>-->
-							<!--</ul>-->
-						<!--</div>-->
-					<!--</section>-->
+					</section>
 				</section>
 				<section>
 					<img src="img/qr_poll.png" class="plain">
@@ -182,27 +179,77 @@
 					</section>
 				</section>
 				<section class="about_angular">
+					<section><h2>Default Angular2 <p style="font-family: monospace">#CLI quickstart</p></h2><br>https://angular.io/docs/ts/latest/cli-quickstart.html</section>
 					<section>
-						<h2>Первые шаги</h2>
-						<ul>
-							<li class="fragment">Нашел <a href="https://angular.io/docs/ts/latest/cli-quickstart.html">гайд</a></li>
-							<li class="fragment">Nodejs + npm уже стоит</li>
-							<li class="fragment">#npm install -g @angular/cli</li>
-							<li class="fragment">#ng new my-angular-project</li>
-							<li class="fragment">#cd my-app</li>
-							<li class="fragment">#ng serve</li>
-						</ul>
+						<pre><code data-trim style="font-size: 40px; line-height: 45px">
+							#npm install -g @angular/cli
+							#ng new my-angular-project
+							#cd my-app
+							#ng serve
+						</code></pre>
 					</section>
-					<section data-state="hide-meter">
+					<section>
 						<h2>Первые впечатления</h2>
 						<ul>
-							<li>4 строчки, 10 минут и есть работающее приложение с hot-reload, неплохо.</li>
-							<li>Сложная файловая структура</li><!--Файловая структура очень развесистая и сразу не очень понятно, зачем это все-->
-							<li>О, примеры тестов лежат, это хорошо!</li>
-							<li>Scaffolding очень удобный</li>
+							<li>4 команды</li>
+							<li>10 минут</li>
+							<li>Работающее приложение с hot-reload.</li>
+						</ul>
+					</section>
+					<section>
+						<pre><code data-trim style="font-size: 40px; line-height: 45px">
+							#ng generate component weather-report
+						</code></pre>
+						<img class="plain fragment" width="1000px" src="img/angular_component_struct.png">
+					</section>
+					<section>
+						<pre><code data-trim style="font-size: 40px; line-height: 45px">
+							getWeather(city: string): Observable&lt;WeatherData&gt; {
+								const params = new URLSearchParams();
+								params.set('units', 'metric');
+								params.set('q', city);
+
+								return this.http.get(this.weatherApiUrl, {search: params})
+								  .map(this.extractData)
+								  .catch(this.processError);
+							}
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim style="font-size: 40px; line-height: 45px">
+							getWeather(city: string) {
+								const params = new URLSearchParams();
+								params.set('units', 'metric');
+								params.set('q', city);
+
+								return this.http.get(this.weatherApiUrl, {search: params})
+								  .toPromise()
+								  .map(this.processData)
+								  .catch(this.processError);
+							}
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim style="font-size: 40px; line-height: 45px">
+							private processData(res: Response) {
+								let body = res.json();
+								this.weatherData = new WeatherData(body);
+							}
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim style="font-size: 40px; line-height: 45px">
+							private processData = (res: Response) => {
+								let body = res.json();
+								this.weatherData = new WeatherData(body);
+							}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Открытые вопросы</h2>
+						<ul>
 							<li>Сборка через ангуляр инструмент, а внутри то что? Как этим управлять?</li>
-							<li>Что со статикой? В гайде пишут положить в assets, а если я хочу svg спрайты?</li>
-							<li>Тот же самый вопрос про css, как же less/sass/postcss?</li>
+							<li>Из коробки есть less/sass/postcss, но как мне добавить плагинов?</li>
 						</ul>
 					</section>
 				</section>
