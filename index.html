@@ -315,8 +315,6 @@
                     }); hljs.initHighlightingOnLoad(); } }				]
 			});
             const meter = new PollMeter();
-            $('.corner_logo').hide();
-            $('.corner_logo').removeClass('right_corner');
             Reveal.addEventListener( 'slidechanged', function( slide ) {
                 var attr = slide.currentSlide.attributes.getNamedItem('data-state');
                 if(attr && attr.value == 'hide-meter'){
@@ -325,6 +323,7 @@
                     meter.init(100);
                 }
                 $('.corner_logo').hide();
+                $('.corner_logo').removeClass('right_corner');
                 let cls;
                 if(cls = getCurrentFramework(slide.currentSlide)) {
                     if (cls === 'about_both') {
