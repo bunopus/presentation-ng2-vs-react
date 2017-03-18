@@ -24,6 +24,14 @@
     position: absolute;
     top: 10px;
     left: 10px;
+    z-index: 1000;
+}
+
+.corner_logo.right_corner {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    left: inherit;
 }
 
 .corner_logo img {
@@ -54,4 +62,39 @@
 .reveal .head-score {
     /*display: block;*/
     margin-right: 20px;
+}
+
+.reveal section.about_both.present {
+    padding: 0;
+}
+
+.half-by-half {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+.half-by-half .left {
+    flex: 0 1 50%;
+    min-height: 100%;
+    max-width: 50%;
+    align-items: flex-start;
+}
+
+.half-by-half .angular-bg {
+    background-color: rgba(181,46,43, 0.1);
+}
+
+.half-by-half .right  {
+    flex: 0 1 50%;
+    height: 100%;
+    max-width: 50%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.half-by-half .react-bg {
+    background-color: rgba(97,218,251, 0.1);
 }

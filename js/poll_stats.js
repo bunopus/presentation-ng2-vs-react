@@ -17,7 +17,8 @@ class PollMeter {
             .style('font-weight', 'bold')
             .style('position', 'absolute')
             .style('right', '15px')
-            .style('bottom', '15px');
+            .style('bottom', '15px')
+            .style('z-index', '10000');
 
         this.container
             .append('svg:svg')

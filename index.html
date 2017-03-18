@@ -141,23 +141,23 @@
 									sandbox.stub(axios, 'get').returns(resolved);
 
 									const renderer = ReactTestUtils.createRenderer();
-									renderer.render(<WeatherWidget city="Saint-Petersburg"></WeatherWidget>);
+									renderer.render(&lt;WeatherWidget city="Saint-Petersburg"&gt;&lt;/WeatherWidget&gt;);
 									const result = renderer.getRenderOutput();
 
-									setTimeout(() => {
+									setTimeout(() =&gt; {
 										expect(result.type).toBe('div');
 										expect(result.props.children).toEqual([
-											<h2>Hello, username!</h2>,
-											<h2>
+											&lt;h2&gt;Hello, username!&lt;/h2&gt;,
+											&lt;h2&gt;
 												Your city: {'Saint-Petersburg'}
-											</h2>,
-											<h3>The Weather is: {'My Weather'}</h3>,
-											<span>
-												<h3>
+											&lt;/h2&gt;,
+											&lt;h3&gt;The Weather is: {'My Weather'}&lt;/h3&gt;,
+											&lt;span&gt;
+												&lt;h3&gt;
 													Go get drunk
-												</h3>
-												<img alt="beer" src="beer.png" width={30}/>
-											</span>
+												&lt;/h3&gt;
+												&lt;img alt="beer" src="beer.png" width={30}/&gt;
+											&lt;/span&gt;
 										]);
 										done();
 									}, 0);
@@ -255,6 +255,25 @@
 					<section>
 						<h2><a href="https://ng2-vs-react.herokuapp.com/example" data-preview-link>$$$ Супер Проект $$$</a></h2>
 					</section>
+                    <section class="about_both">
+                        <div class="half-by-half">
+                        <div class="left angular-bg">
+                                <h1>Angular</h1>
+							<span class="fragment" data-fragment-index="1">Вот</span><br>
+							<span class="fragment" data-fragment-index="2">так</span><br>
+							<span class="fragment" data-fragment-index="3">оно</span><br>
+							<span class="fragment" data-fragment-index="4">работает</span><br>
+						</div>
+                        <div class="right react-bg">
+                                <h1>React</h1>
+							<span class="fragment" data-fragment-index="1">Вот</span><br>
+							<span class="fragment" data-fragment-index="2">так</span><br>
+							<span class="fragment" data-fragment-index="3">оно</span><br>
+							<span class="fragment" data-fragment-index="4">работает</span><br>
+
+						</div>
+                        </div>
+                    </section>
 				</section>
 				<section>
 					<h2><u>Часть 3: Боль</u></h2>
@@ -297,6 +316,7 @@
 			});
             const meter = new PollMeter();
             $('.corner_logo').hide();
+            $('.corner_logo').removeClass('right_corner');
             Reveal.addEventListener( 'slidechanged', function( slide ) {
                 var attr = slide.currentSlide.attributes.getNamedItem('data-state');
                 if(attr && attr.value == 'hide-meter'){
@@ -307,6 +327,10 @@
                 $('.corner_logo').hide();
                 let cls;
                 if(cls = getCurrentFramework(slide.currentSlide)) {
+                    if (cls === 'about_both') {
+                        $(`.corner_logo`).show();
+                        $(`.about_react`).addClass('right_corner');
+                    }
                     $(`.corner_logo.${cls}`).show();
 				}
             }, false );
@@ -314,8 +338,9 @@
 			function getCurrentFramework(slide) {
 			    const ngClass = 'about_angular';
 			    const reactClass = 'about_react';
+			    const both = 'about_both';
 			    function findClass(el) {
-			        return findOne(el.classList, [ngClass, reactClass]);
+			        return findOne(el.classList, [ngClass, reactClass, both]);
 			    }
                 return findClass(slide) || findClass(slide.parentElement);
 			}
