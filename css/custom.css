@@ -4,6 +4,11 @@
     margin-right: 150px;
 }
 
+.reveal .eg_info ul {
+    display: block;
+    text-align: right;
+}
+
 .reveal .it_info {
     text-align: left;
     margin-left: 150px;
@@ -40,6 +45,10 @@
 .reveal code {
     padding: 20px !important;
     max-height: 1500px !important;
+}
+
+.reveal code span.fragment.fade-out.visible {
+    display: none;
 }
 
 .reveal .head-score {

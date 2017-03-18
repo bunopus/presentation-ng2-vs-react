@@ -33,7 +33,14 @@
 				<section data-background="img/about_eg.png" data-state="hide-meter">
 					<div class="eg_info">
 						<h2>Евгений Гусев</h2>
-						<img src="img/wrike_logo.png" class="plain" style="width: 150px">
+						<img src="img/wrike_logo.png" class="plain" style="width: 150px; margin-bottom: 50px">
+						<ul>
+							<li class="fragment">Dev 10 лет</li>
+							<li class="fragment">Всякий разный C</li>
+							<li class="fragment">JS, Coffee</li>
+							<li class="fragment">CodeFest x2</li>
+							<li class="fragment">Dart + Angular 2</li>
+						</ul>
 					</div>
 				</section>
 				<section data-background="img/about_it.png" data-state="hide-meter">
@@ -203,43 +210,22 @@
 						<img class="plain fragment" width="1000px" src="img/angular_component_struct.png">
 					</section>
 					<section>
-						<pre><code data-trim style="font-size: 40px; line-height: 45px">
-							getWeather(city: string): Observable&lt;WeatherData&gt; {
+						<pre><code data-trim style="font-size: 40px; line-height: 45px" data-noescape>
+							getWeather(city: string)<span class="fragment fade-out" data-fragment-index="1">: Observable&lt;WeatherData&gt;</span> {
 								const params = new URLSearchParams();
 								params.set('units', 'metric');
 								params.set('q', city);
 
 								return this.http.get(this.weatherApiUrl, {search: params})
+								<span class="fragment fade-in" data-fragment-index="1">  .toPromise()</span>
 								  .map(this.extractData)
 								  .catch(this.processError);
 							}
 						</code></pre>
 					</section>
 					<section>
-						<pre><code data-trim style="font-size: 40px; line-height: 45px">
-							getWeather(city: string) {
-								const params = new URLSearchParams();
-								params.set('units', 'metric');
-								params.set('q', city);
-
-								return this.http.get(this.weatherApiUrl, {search: params})
-								  .toPromise()
-								  .map(this.processData)
-								  .catch(this.processError);
-							}
-						</code></pre>
-					</section>
-					<section>
-						<pre><code data-trim style="font-size: 40px; line-height: 45px">
-							private processData(res: Response) {
-								let body = res.json();
-								this.weatherData = new WeatherData(body);
-							}
-						</code></pre>
-					</section>
-					<section>
-						<pre><code data-trim style="font-size: 40px; line-height: 45px">
-							private processData = (res: Response) => {
+						<pre><code data-trim style="font-size: 40px; line-height: 45px" data-noescape>
+							private processData <span class="fragment" data-fragment-index="1" style="color:red">=</span> (res: Response) <span class="fragment" style="color:red" data-fragment-index="1">=></span> {
 								let body = res.json();
 								this.weatherData = new WeatherData(body);
 							}
