@@ -79,7 +79,21 @@
 .reveal .half-by-half img {
     max-height: 100%;
     max-width: 100%;
-    padding: 0;
+    margin: 0;
+}
+
+.half-by-half .image-area {
+    position:relative;
+    width: 100%;
+    height: 100%
+}
+
+.half-by-half .image-area .entry {
+    position:absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
 }
 
 .half-by-half .left {
