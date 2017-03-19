@@ -44,27 +44,24 @@
 					</div>
 				</section>
 				<section data-background="img/about_it.png" data-state="hide-meter">
-					<section>
-						<div class="it_info">
-							<h2>Илья Таратухин</h2>
-							<div style="position:relative; height: 150px;" >
-								<div class="fragment fade-in" style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;" data-fragment-index="0">
-									<img src="img/wrike_logo.png" class="plain" width="150px">
-								</div>
-								<div class="fragment fade-out" style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;" data-fragment-index="0">
-									<img src="img/2gis.png" class="plain" width="150px">
-								</div>
+					<div class="it_info">
+						<h2>Илья Таратухин</h2>
+						<div style="position:relative; height: 150px;" >
+							<div class="fragment fade-in" style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;" data-fragment-index="0">
+								<img src="img/wrike_logo.png" class="plain" width="150px">
 							</div>
-							<ul>
-								<li class="fragment">Frontend dev 6 лет</li>
-								<li class="fragment">2gis.ru x2</li>
-								<li class="fragment">CodeFest x2</li>
-								<li class="fragment">Wrike полгода</li>
-								<li class="fragment">Dart + Angular 2</li>
-							</ul>
-
+							<div class="fragment fade-out" style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;" data-fragment-index="0">
+								<img src="img/2gis.png" class="plain" width="150px">
+							</div>
 						</div>
-					</section>
+						<ul>
+							<li class="fragment">Frontend dev 6 лет</li>
+							<li class="fragment">2gis.ru x2</li>
+							<li class="fragment">CodeFest x2</li>
+							<li class="fragment">Wrike полгода</li>
+							<li class="fragment">Dart + Angular 2</li>
+						</ul>
+					</div>
 				</section>
 				<section>
 					<img src="img/qr_poll.png" class="plain">
@@ -255,25 +252,33 @@
 					<section>
 						<h2><a href="https://ng2-vs-react.herokuapp.com/example" data-preview-link>$$$ Супер Проект $$$</a></h2>
 					</section>
-                    <section class="about_both">
-                        <div class="half-by-half">
-                        <div class="left angular-bg">
-                                <h1>Angular</h1>
-							<span class="fragment" data-fragment-index="1">Вот</span><br>
-							<span class="fragment" data-fragment-index="2">так</span><br>
-							<span class="fragment" data-fragment-index="3">оно</span><br>
-							<span class="fragment" data-fragment-index="4">работает</span><br>
-						</div>
-                        <div class="right react-bg">
-                                <h1>React</h1>
-							<span class="fragment" data-fragment-index="1">Вот</span><br>
-							<span class="fragment" data-fragment-index="2">так</span><br>
-							<span class="fragment" data-fragment-index="3">оно</span><br>
-							<span class="fragment" data-fragment-index="4">работает</span><br>
+					<section class="about_angular" data-background="img/1-data-flow/angular-1.png">
+					</section>
+					<section class="about_angular" data-background="img/1-data-flow/angular-2.png">
+					</section>
+					<section class="about_angular" data-background="img/1-data-flow/angular-3.png">
+					</section>
+					<section class="about_angular" data-background="img/1-data-flow/angular-4.png">
+					</section>
+					<!--<section class="about_both">-->
+                        <!--<div class="half-by-half">-->
+                        <!--<div class="left angular-bg">-->
+                                <!--<h1>Angular</h1>-->
+							<!--<span class="fragment" data-fragment-index="1">Вот</span><br>-->
+							<!--<span class="fragment" data-fragment-index="2">так</span><br>-->
+							<!--<span class="fragment" data-fragment-index="3">оно</span><br>-->
+							<!--<span class="fragment" data-fragment-index="4">работает</span><br>-->
+						<!--</div>-->
+                        <!--<div class="right react-bg">-->
+                                <!--<h1>React</h1>-->
+							<!--<span class="fragment" data-fragment-index="1">Вот</span><br>-->
+							<!--<span class="fragment" data-fragment-index="2">так</span><br>-->
+							<!--<span class="fragment" data-fragment-index="3">оно</span><br>-->
+							<!--<span class="fragment" data-fragment-index="4">работает</span><br>-->
 
-						</div>
-                        </div>
-                    </section>
+						<!--</div>-->
+                        <!--</div>-->
+                    <!--</section>-->
 				</section>
 				<section>
 					<h2><u>Часть 3: Боль</u></h2>
@@ -315,6 +320,7 @@
                     }); hljs.initHighlightingOnLoad(); } }				]
 			});
             const meter = new PollMeter();
+            $('.corner_logo').hide();
             Reveal.addEventListener( 'slidechanged', function( slide ) {
                 var attr = slide.currentSlide.attributes.getNamedItem('data-state');
                 if(attr && attr.value == 'hide-meter'){
