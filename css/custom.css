@@ -76,6 +76,12 @@
     height: 100vh;
 }
 
+.reveal .half-by-half img {
+    max-height: 100%;
+    max-width: 100%;
+    padding: 0;
+}
+
 .half-by-half .left {
     flex: 0 1 50%;
     min-height: 100%;
