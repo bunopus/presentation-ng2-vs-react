@@ -96,6 +96,14 @@
     right: 0;
 }
 
+.angular-bg .image-area .entry {
+    background-color: #EADDD8;
+}
+
+.react-bg .image-area .entry {
+    background-color: #E1EFED;
+}
+
 .half-by-half .left {
     flex: 0 1 50%;
     min-height: 100%;
