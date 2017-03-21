@@ -318,6 +318,20 @@
                         </div>
 						</div>
                     </section>
+					<section class="about_both horizontal">
+						<div class="half-by-half">
+							<div class="left angular-bg">
+								<pre><code data-trim style="font-size: 40px; line-height: 45px" data-noescape>
+									<span class="fragment fade-in" data-fragment-index="1">sdfsdf</span>
+						        </code></pre>
+							</div>
+							<div class="right react-bg">
+								<pre><code data-trim style="font-size: 40px; line-height: 45px" data-noescape>
+									<span class="fragment fade-in" data-fragment-index="2">sdfsdfsdf</span>
+						        </code></pre>
+							</div>
+						</div>
+					</section>
 					<section class="about_both">
 						<h2>User interaction</h2>
 					</section>
@@ -384,17 +398,29 @@
                 } else {
                     meter.init(100);
                 }
-                $('.corner_logo').hide();
-                $('.corner_logo').removeClass('right_corner');
+
+                var cornerLogo = $('.corner_logo');
+                cornerLogo.hide();
+                cornerLogo.removeClass('right_corner');
+                cornerLogo.removeClass('left_middle');
                 let cls;
                 if(cls = getCurrentFramework(slide.currentSlide)) {
                     if (cls === 'about_both') {
-                        $(`.corner_logo`).show();
-                        $(`.about_react`).addClass('right_corner');
+                        cornerLogo.show();
+                        var react_logo = $(`.about_react`);
+                        react_logo.addClass('right_corner');
+                        if(slideOrParentHasClass(slide.currentSlide, 'horizontal')) {
+                            react_logo.removeClass('right_corner');
+                            react_logo.addClass('left_middle');
+                        }
                     }
                     $(`.corner_logo.${cls}`).show();
 				}
             }, false );
+
+            function slideOrParentHasClass(slide, cls) {
+                return findOne(slide.classList, [cls]) || findOne(slide.parentElement.classList, [cls]);
+            }
 
 			function getCurrentFramework(slide) {
 			    const ngClass = 'about_angular';
