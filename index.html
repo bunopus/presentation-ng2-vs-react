@@ -34,13 +34,6 @@
 					<div class="eg_info">
 						<h2>Евгений Гусев</h2>
 						<img src="img/wrike_logo.png" class="plain" style="width: 150px; margin-bottom: 50px">
-						<ul>
-							<li class="fragment">Dev 10 лет</li>
-							<li class="fragment">Всякий разный C</li>
-							<li class="fragment">JS, Coffee</li>
-							<li class="fragment">CodeFest x2</li>
-							<li class="fragment">Dart + Angular 2</li>
-						</ul>
 					</div>
 				</section>
 				<section data-background="img/about_it.png" data-state="hide-meter">
@@ -54,13 +47,6 @@
 								<img src="img/2gis.png" class="plain" width="150px">
 							</div>
 						</div>
-						<ul>
-							<li class="fragment">Frontend dev 6 лет</li>
-							<li class="fragment">2gis.ru x2</li>
-							<li class="fragment">CodeFest x2</li>
-							<li class="fragment">Wrike полгода</li>
-							<li class="fragment">Dart + Angular 2</li>
-						</ul>
 					</div>
 				</section>
 				<section>
@@ -79,25 +65,6 @@
 						<img src="img/http_react.png" class="plain" width="1300">
 						<img src="img/http_react_answer.png" class="plain fragment" width="1300">
 						<img src="img/karl.jpg" class="plain fragment centered shadowed" width="600">
-					</section>
-					<section>
-						<pre><code data-trim style="font-size: 40px; line-height: 45px">
-							componentWillReceiveProps(nextProps) {
-								if (nextProps.city !== this.props.city) {
-									this.setWeather(nextProps.city);
-								}
-							}
-
-							setWeather(city) {
-								const uri =
-									`http://api.openweathermap.org/data/2.5/weather?q=${city}`;
-								Axios.get(uri).then((resp) => {
-									this.setState({weather: resp.data.weather[0].main})
-								}).catch(function (error) {
-									console.log(error);
-								});
-							}
-						</code></pre>
 					</section>
 					<section data-background-video="video/react_starter_demo.mp4" data-background-cover="contain"></section>
 					<section>
@@ -130,37 +97,6 @@
 						<h2>Вкратце о тестах:</h2>
 					</section>
 					<section data-background="img/react_tests_fail.gif"></section>
-					<section>
-						<pre><code data-trim style="font-size: 22px; line-height: 22px">
-								it('renders properly', (done) => {
-
-									const resolved = new Promise((r) => r({data: {weather: [{main: 'My Weather'}]}}));
-									sandbox.stub(axios, 'get').returns(resolved);
-
-									const renderer = ReactTestUtils.createRenderer();
-									renderer.render(&lt;WeatherWidget city="Saint-Petersburg"&gt;&lt;/WeatherWidget&gt;);
-									const result = renderer.getRenderOutput();
-
-									setTimeout(() =&gt; {
-										expect(result.type).toBe('div');
-										expect(result.props.children).toEqual([
-											&lt;h2&gt;Hello, username!&lt;/h2&gt;,
-											&lt;h2&gt;
-												Your city: {'Saint-Petersburg'}
-											&lt;/h2&gt;,
-											&lt;h3&gt;The Weather is: {'My Weather'}&lt;/h3&gt;,
-											&lt;span&gt;
-												&lt;h3&gt;
-													Go get drunk
-												&lt;/h3&gt;
-												&lt;img alt="beer" src="beer.png" width={30}/&gt;
-											&lt;/span&gt;
-										]);
-										done();
-									}, 0);
-								});
-						</code></pre>
-					</section>
 					<section>
 						<h2>Заметки на полях:</h2>
 						<ul>
@@ -236,14 +172,6 @@
 						</ul>
 					</section>
 				</section>
-
-				<!--
-					Заметки на полях.
-						Надо раз в 2-3 минуты передавать друг другу слово (не реже)
-						Технологию раскрывать больше через вопросы и набросы
-						Можно смело чередовать технологии при повествовании, у нас очень хорошо помечены слайды
-						Надо блин уже сделать приложение, без него оч сложно.
-				-->
 				<section>
 					<section>
 					<h2><u>Часть 2: Спор</u></h2>
@@ -318,20 +246,108 @@
                         </div>
 						</div>
                     </section>
+                    <section class="about_both">
+                        <h2>Component Definition</h2>
+                    </section>
 					<section class="about_both horizontal">
 						<div class="half-by-half">
 							<div class="left angular-bg">
-								<pre><code data-trim style="font-size: 40px; line-height: 45px" data-noescape>
-									<span class="fragment fade-in" data-fragment-index="1">sdfsdf</span>
-						        </code></pre>
+								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape><span class="fragment fade-in" data-fragment-index="1">@Component({
+  selector: 'app-comments',
+  //...
+})
+export class CommentsWidget {
+						        </span></code></pre>
 							</div>
 							<div class="right react-bg">
-								<pre><code data-trim style="font-size: 40px; line-height: 45px" data-noescape>
-									<span class="fragment fade-in" data-fragment-index="2">sdfsdfsdf</span>
-						        </code></pre>
+								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape><span class="fragment fade-in" data-fragment-index="2">export const Comments = ({comments, commentAdd}) => {
+  return `//template JSX code goes here`
+};
+
+export default Comments.propTypes = {
+  commentAdd : React.PropTypes.func.isRequired,
+  comments: React.PropTypes.array.isRequired
+}</span></code></pre>
 							</div>
 						</div>
 					</section>
+                    <section class="about_both horizontal">
+                        <div class="half-by-half">
+                            <div class="left angular-bg">
+								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape><span data-fragment-index="1">@Component({
+  selector: 'app-comments',
+  template: `
+      &lt;comment *ngFor=&quot;let comment of comments&quot; [comment]=&quot;comment&quot;&gt;&lt;/comment&gt;
+      &lt;comment-form (onAdd)=&quot;commentAdd&quot;&gt;&lt;/comment-form&gt;
+  `
+})
+export class CommentsWidget {</span></code></pre>
+                            </div>
+                            <div class="right react-bg">
+								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape><span class="fragment fade-in" data-fragment-index="2">export const Comments = ({comments, commentAdd}) =&gt; (
+  &lt;div&gt;
+    {comments.map(comment =&gt; &lt;Comment comment={comment} key={comment.date}/&gt;)}
+    &lt;CommentForm commentAdd={commentAdd} /&gt;
+  &lt;/div&gt;
+);</span></code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="about_both horizontal">
+                        <div class="half-by-half">
+                            <div class="left angular-bg">
+								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape><span data-fragment-index="1">export class CommentsWidget implements OnInit {
+  private comments: Array&lt;Object&gt;
+
+  constructor(private commentsService: CommentsService) {
+  }
+
+  ngOnInit() {
+    this.commentsService.getComments().subscribe(
+      (comments) => this.comments = comments,
+      (error) => console.log(error));
+  }</span></code></pre>
+                            </div>
+                            <div class="right react-bg">
+								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape><span class="fragment fade-in" data-fragment-index="2">const mapDispatchToProps = {
+  commentAdd
+};
+
+const mapStateToProps = (state) => ({
+  comments : state.comments
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comments)</span></code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="about_both horizontal">
+                        <div class="half-by-half">
+                            <div class="left angular-bg">
+								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape><span data-fragment-index="1">// CommentsWidget
+  commentAdd(comment) {
+    this.commentsService.addComment(comment);
+  }
+
+// CommentForm
+  @Output() onAdd = new EventEmitter();
+
+  onButtonClick() {
+    this.onAdd.emit({ this.commentText });
+  }                                </span></code></pre>
+                            </div>
+                            <div class="right react-bg">
+								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape><span class="fragment fade-in" data-fragment-index="2">export default connect(mapStateToProps, {commentAdd})(Comments)
+
+export function commentAdd (comment) {
+  return {
+    type    : COMMENT_ADD,
+    payload : comment
+  }
+}</span></code></pre>
+                            </div>
+                        </div>
+                    </section>
 					<section class="about_both">
 						<h2>User interaction</h2>
 					</section>
@@ -340,8 +356,26 @@
 						<div class="half-by-half">
 							<div class="left angular-bg">
 								<div class="image-area">
-									<div class="fragment current-visible entry" data-fragment-index="1">
+									<div class="fragment entry" data-fragment-index="1">
 										<img class="fragment plain" data-fragment-index="1" src="img/2-user-interaction/angular-1.png">
+									</div>
+									<div class="fragment entry" data-fragment-index="2">
+										<img class="fragment plain" data-fragment-index="2" src="img/2-user-interaction/angular-2.png">
+									</div>
+									<div class="fragment entry" data-fragment-index="3">
+										<img class="fragment plain" data-fragment-index="3" src="img/2-user-interaction/angular-3.png">
+									</div>
+									<div class="fragment entry" data-fragment-index="4">
+										<img class="fragment plain" data-fragment-index="4" src="img/2-user-interaction/angular-4.png">
+									</div>
+									<div class="fragment entry" data-fragment-index="5">
+										<img class="fragment plain" data-fragment-index="5" src="img/2-user-interaction/angular-5.png">
+									</div>
+									<div class="fragment entry" data-fragment-index="6">
+										<img class="fragment plain" data-fragment-index="6" src="img/2-user-interaction/angular-6.png">
+									</div>
+									<div class="fragment entry" data-fragment-index="7">
+										<img class="fragment plain" data-fragment-index="7" src="img/2-user-interaction/angular-7.png">
 									</div>
 								</div>
 							</div>
@@ -353,11 +387,6 @@
 				<section>
 					<h2><u>Часть 3: Боль</u></h2>
 					<img src="img/dogs_pain.jpg" class="img_chapter">
-					<!--<li>JS libraries</li>-->
-					<!--<li>Server-side rendering</li>-->
-					<!--<li>Dynamic components</li>-->
-					<!--<li>Решение возникающих проблем</li>-->
-					<!--<li></li>-->
 				</section>
 				<section>
 					<h2><u>Часть 4: Конец</u></h2>
