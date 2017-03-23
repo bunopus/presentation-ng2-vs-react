@@ -149,3 +149,24 @@
     min-height: 50%;
     width: 100%;
 }
+
+div.faces {
+    padding-top: 100px;
+}
+.faces img {
+    border-radius: 25px;
+}
+
+.reveal div.info_middle {
+    position: absolute;
+    left:50%;
+    bottom: 120px;
+    margin-left: -238px;
+}
+
+.reveal img.small-logo {
+    width: 50px;
+    padding-right: 5px;
+    margin: 0;
+    vertical-align:middle;
+}
