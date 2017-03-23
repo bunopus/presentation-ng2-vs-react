@@ -410,7 +410,7 @@ export function commentAdd (comment) {
 							//...
 
 							@ViewChild('inpt') inpt:ElementRef;
-							
+
 							ngOnInit() {
 								this.zone.runOutsideAngular(() => {
 									sub = Observable.fromEvent(this.inpt.nativeElement, 'mousemove')
@@ -423,8 +423,11 @@ export function commentAdd (comment) {
 					</section>
 				</section>
 				<section>
-					<h2><u>Часть 4: Конец</u></h2>
-					<img src="img/dogs_end.jpg" class="img_chapter">
+					<section>
+						<h2><u>Часть 4: Конец</u></h2>
+						<img src="img/dogs_end.jpg" class="img_chapter">
+					</section>
+					<section data-background="img/cloud.png"></section>
 				</section>
 			</div>
 		</div>
