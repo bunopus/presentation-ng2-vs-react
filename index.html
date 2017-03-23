@@ -351,7 +351,6 @@ export function commentAdd (comment) {
 					<section class="about_both">
 						<h2>User interaction</h2>
 					</section>
-					<section data-background-video="video/user_click.mp4" data-background-cover="contain"></section>
 					<section class="about_both">
 						<div class="half-by-half">
 							<div class="left angular-bg">
@@ -385,8 +384,43 @@ export function commentAdd (comment) {
 					</section>
 				</section>
 				<section>
-					<h2><u>Часть 3: Боль</u></h2>
-					<img src="img/dogs_pain.jpg" class="img_chapter">
+					<section>
+						<h2><u>Часть 3: Боль</u></h2>
+						<img src="img/dogs_pain.jpg" class="img_chapter">
+					</section>
+					<section class="about_angular">
+						<img src="img/slowpoke.png" class="plain">
+					</section>
+					<section class="about_angular">
+						<pre><code data-trim style="font-size: 40px; line-height: 45px" data-noescape>
+							&lt;textarea (mousemove)=&quot;onMouseMove($event)&quot;&gt;&lt;/textarea&gt;
+
+							//...
+
+							onMouseMove(e) {
+							  //do something with e
+							}
+						</code></pre>
+					</section>
+					<section data-background-video="video/angular_slow.mp4" data-background-cover="contain"></section>
+					<section class="about_angular">
+						<pre><code data-trim style="font-size: 40px; line-height: 45px; overflow: hidden;" data-noescape>
+							&lt;textarea #inpt&gt; &lt;/textarea&gt;
+
+							//...
+
+							@ViewChild('inpt') inpt:ElementRef;
+							
+							ngOnInit() {
+								this.zone.runOutsideAngular(() => {
+									sub = Observable.fromEvent(this.inpt.nativeElement, 'mousemove')
+										.subscribe(e => {
+											this.onMouseMove(e);
+									})
+								});
+							}
+						</code></pre>
+					</section>
 				</section>
 				<section>
 					<h2><u>Часть 4: Конец</u></h2>
