@@ -158,10 +158,13 @@ div.faces {
 }
 
 .reveal div.info_middle {
+    display: flex;
     position: absolute;
-    left:50%;
     bottom: 120px;
-    margin-left: -238px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
 }
 
 .reveal img.small-logo {
