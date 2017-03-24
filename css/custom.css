@@ -170,3 +170,14 @@ div.faces {
     margin: 0;
     vertical-align:middle;
 }
+
+
+.reveal .block {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.reveal img.block {
+    margin-right: -5px;
+}
+
