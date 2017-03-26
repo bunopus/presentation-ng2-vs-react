@@ -168,8 +168,15 @@
 					<section>
 						<h2>Открытые вопросы</h2>
 						<ul>
-							<li>Сборка через ангуляр инструмент, а внутри то что? Как этим управлять?</li>
-							<li>Из коробки есть less/sass/postcss, но как мне добавить плагинов?</li>
+							<li class="fragment">Как получить контроль над сборкой?</li>
+							<li class="fragment">Как подключить less/sass/postcss?</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Итого:</h2>
+						<ul>
+							<li class="fragment">Идеально для разработчик вашего первого SPA</li>
+							<li class="fragment">Нужно быть готовым изучать инструменты фреймворка</li>
 						</ul>
 					</section>
 				</section>
@@ -261,7 +268,7 @@ export class CommentsWidget {
 						        </span></code></pre>
 							</div>
 							<div class="right react-bg">
-								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape><span class="fragment fade-in" data-fragment-index="2">export const Comments = ({comments, commentAdd}) => {
+								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape class="javascript"><span class="fragment fade-in" data-fragment-index="2">export const Comments = ({comments, commentAdd}) => {
   return `//template JSX code goes here`
 };
 
@@ -285,7 +292,7 @@ export default Comments.propTypes = {
 export class CommentsWidget {</span></code></pre>
                             </div>
                             <div class="right react-bg">
-								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape><span class="fragment fade-in" data-fragment-index="2">export const Comments = ({comments, commentAdd}) =&gt; (
+								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape class="javascript"><span class="fragment fade-in" data-fragment-index="2">export const Comments = ({comments, commentAdd}) =&gt; (
   &lt;div&gt;
     {comments.map(comment =&gt; &lt;Comment comment={comment} key={comment.date}/&gt;)}
     &lt;CommentForm commentAdd={commentAdd} /&gt;
@@ -310,7 +317,7 @@ export class CommentsWidget {</span></code></pre>
   }</span></code></pre>
                             </div>
                             <div class="right react-bg">
-								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape><span class="fragment fade-in" data-fragment-index="2">const mapDispatchToProps = {
+								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape class="javascript"><span class="fragment fade-in" data-fragment-index="2">const mapDispatchToProps = {
   commentAdd
 };
 
@@ -338,9 +345,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(Comments)</span></co
   }                                </span></code></pre>
                             </div>
                             <div class="right react-bg">
-								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape><span class="fragment fade-in" data-fragment-index="2">export default connect(mapStateToProps, {commentAdd})(Comments)
+								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape class="javascript"><span class="fragment fade-in" data-fragment-index="2">export default connect(mapStateToProps, {commentAdd})(Comments)
 
-export function commentAdd (comment) {
+export function commentAdd(comment) {
   return {
     type    : COMMENT_ADD,
     payload : comment
@@ -445,6 +452,42 @@ export function commentAdd (comment) {
 											this.onMouseMove(e);
 									})
 								});
+							}
+						</code></pre>
+					</section>
+					<section class="about_react ">
+						<img src="img/react-dive.jpg" class="plain">
+					</section>
+					<section class="about_react ">
+						<pre><code data-trim style="font-size: 40px; line-height: 45px" data-noescape class="javascript">
+							import { Map } from '2gis-maps-react';
+
+							export const ContactsMap = () =&gt; {
+								const mapCenter = [59.933608, 30.305743];
+								const mapStyle = {width: "100%", height: 400};
+
+								return &lt;Map style={mapStyle} center={mapCenter} zoom={16} /&gt;;
+							};
+						</code></pre>
+					</section>
+					<section class="about_react ">
+						<pre><code data-trim style="font-size: 40px; line-height: 45px" data-noescape class="javascript">
+							class contactsMap extends React.Component {
+								componentDidMount() {
+									this.map = new Map('#map');
+								}
+
+								componentWillReceiveProps(newProps) {
+									this.map.update(newProps);
+								}
+
+								shouldComponentUpdate() {
+									return false;
+								}
+
+								render() {
+									return &lt;div id="map"&gt;&lt;/div&gt;;
+								}
 							}
 						</code></pre>
 					</section>
