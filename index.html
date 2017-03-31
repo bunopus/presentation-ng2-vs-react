@@ -329,33 +329,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(Comments)</span></co
                             </div>
                         </div>
                     </section>
-                    <section class="about_both horizontal">
-                        <div class="half-by-half">
-                            <div class="left angular-bg">
-								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape><span data-fragment-index="1">// CommentsWidget
-  commentAdd(comment) {
-    this.commentsService.addComment(comment);
-  }
-
-// CommentForm
-  @Output() onAdd = new EventEmitter();
-
-  onButtonClick() {
-    this.onAdd.emit({ this.commentText });
-  }                                </span></code></pre>
-                            </div>
-                            <div class="right react-bg">
-								<pre><code data-trim style="font-size: 35px; line-height: 35px" data-noescape class="javascript"><span class="fragment fade-in" data-fragment-index="2">export default connect(mapStateToProps, {commentAdd})(Comments)
-
-export function commentAdd(comment) {
-  return {
-    type    : COMMENT_ADD,
-    payload : comment
-  }
-}</span></code></pre>
-                            </div>
-                        </div>
-                    </section>
 					<section class="about_both">
 						<h2>User interaction</h2>
 					</section>
